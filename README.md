@@ -21,7 +21,7 @@ baseline, then against a hardened one.
 | Phase | What happens | Status |
 |-------|--------------|--------|
 | 1 | Build the vulnerable corporate baseline | scripts ready |
-| 2 | Attack with the stolen vendor credential; show the SIEM sees almost nothing | planned |
+| 2 | Attack with the stolen vendor credential; show the SIEM sees almost nothing | scripts + runbook ready |
 | 3 | Harden (phishing-resistant MFA, ZTNA/jump host, segmentation, JIT) and instrument | planned |
 | 4 | Re-attack; measure what's blocked, what's detected, how fast | planned |
 

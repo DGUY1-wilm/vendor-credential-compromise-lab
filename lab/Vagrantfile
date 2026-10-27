@@ -73,4 +73,20 @@ Vagrant.configure("2") do |config|
     fs.vm.provision "shell", path: "scripts/common/install-sysmon.ps1"
     fs.vm.provision "shell", path: "scripts/common/install-wazuh-agent.ps1"
   end
+  # --- Attacker (Kali) -------------------------------------------------------
+  # Placed on the corp internal net to represent the position an attacker reaches
+  # AFTER authenticating over the vendor's remote access with the stolen password.
+  # Phase 3 replaces that flat reach with a jump host / ZTNA.
+  config.vm.define "kali", autostart: false do |k|
+    k.vm.box      = "kalilinux/rolling"
+    k.vm.hostname = "kali"
+    k.vm.network "private_network", ip: "10.10.10.66", virtualbox__intnet: CORP_NET
+    k.vm.provider "virtualbox" do |vb|
+      vb.name   = "acme-kali"
+      vb.memory = 4096
+      vb.cpus   = 2
+    end
+    k.vm.provision "shell", path: "scripts/attacker/provision-kali.sh"
+  end
+
 end

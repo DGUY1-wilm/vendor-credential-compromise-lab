@@ -14,6 +14,8 @@ provisioning scripts.
 | W5 | Flat network — vendor can reach every host | topology (Phase 2 VPN) | ZTNA / jump host to one app; segmentation | T1021 |
 | W6 | Standing access — account always enabled | directory config | Just-in-time enablement | T1078 |
 | W7 | No behavioral alerting on vendor logins | SIEM baseline | Detections in `detections/` + honeytokens | — |
+| W8 | Kerberoastable service account, weak season+year password | seed: dc01 | Strong/managed service-account passwords (gMSA); alert on 4769 RC4 | T1558.003 |
+| W9 | Service account is local admin on fs01 (over-privileged) | seed: fs01 | Least privilege; remove standing local admin | T1078.002 |
 
 ## Narrative
 
@@ -25,3 +27,5 @@ network stayed flat, so anything the account could authenticate to, it could
 reach. No one built alerting specific to vendor behavior.
 
 This is the environment the attacker inherits when the credential is stolen.
+
+The Phase 2 seed scripts add W8 and W9: a backup service account (`svc-backup`) with a registered SPN and a guessable password, made a local administrator on fs01. Together they turn a stolen low-value vendor login into a path to server admin via Kerberoasting.

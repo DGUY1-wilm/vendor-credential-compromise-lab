@@ -5,3 +5,9 @@ lab/.secrets/
 *.log
 *.box
 .DS_Store
+
+# Attack output - keep the folder, not its contents
+attack/loot/*
+!attack/loot/.gitkeep
+attack/scripts/*.hashes
+*.zip
