@@ -29,3 +29,7 @@ reach. No one built alerting specific to vendor behavior.
 This is the environment the attacker inherits when the credential is stolen.
 
 The Phase 2 seed scripts add W8 and W9: a backup service account (`svc-backup`) with a registered SPN and a guessable password, made a local administrator on fs01. Together they turn a stolen low-value vendor login into a path to server admin via Kerberoasting.
+
+## Phase 3 remediation
+
+Controls that close each weakness are in `harden/` and the detections that catch any residual attempt are in `detections/`. W1 (MFA) and W5 (ZTNA) are modelled/described rather than fully enforced in-lab; `harden/README.md` explains why and how they'd be implemented in production.

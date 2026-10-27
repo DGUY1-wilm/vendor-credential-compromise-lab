@@ -1,0 +1,30 @@
+title: Kerberoasting - RC4 Service Ticket Requested
+id: 0cd1059e-23c1-4a87-ba03-f34ab6cfefcb
+status: experimental
+description: >
+    Detects a Kerberos service-ticket request (4769) using RC4 encryption, the
+    signature of Kerberoasting. Attackers request RC4 tickets because they crack
+    far faster offline than AES. Catches Phase 2 step 3 (svc-backup roast).
+references:
+    - https://attack.mitre.org/techniques/T1558/003/
+author: Daniel Guy
+date: 2026/10/27
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4769
+        TicketEncryptionType: '0x17'   # RC4-HMAC
+    filter_machine:
+        ServiceName|endswith: '$'      # machine accounts, normal
+    filter_krbtgt:
+        ServiceName: 'krbtgt'
+    condition: selection and not 1 of filter_*
+falsepositives:
+    - Legacy applications or hosts that still negotiate RC4
+    - Service accounts without AES enabled (fix them, then this gets quieter)
+level: high
+tags:
+    - attack.credential_access
+    - attack.t1558.003

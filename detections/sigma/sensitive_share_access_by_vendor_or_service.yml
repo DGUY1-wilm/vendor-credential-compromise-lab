@@ -1,0 +1,31 @@
+title: Sensitive Share Accessed by Vendor or Service Account
+id: 1f27de44-ba9c-4d50-8de7-8b5c4054e36c
+status: experimental
+description: >
+    A vendor (v-*) or service (svc-*) account reading the Finance or HR shares.
+    Neither has any business reason to. Catches Phase 2 step 1 (over-exposed
+    Finance) and step 5 (collection/staging).
+references:
+    - https://attack.mitre.org/techniques/T1039/
+author: Daniel Guy
+date: 2026/10/27
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 5145
+        ShareName|contains:
+            - 'Finance'
+            - 'HR'
+    actor:
+        SubjectUserName|startswith:
+            - 'v-'
+            - 'svc-'
+    condition: selection and actor
+falsepositives:
+    - A service account explicitly authorized to back up these shares (allowlist it)
+level: high
+tags:
+    - attack.collection
+    - attack.t1039

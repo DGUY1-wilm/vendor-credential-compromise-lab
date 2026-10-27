@@ -1,0 +1,30 @@
+title: Honeytoken Account Authentication Attempt
+id: 67729df3-5072-439e-9d72-4fb0bf1a6d34
+status: stable
+description: >
+    Any authentication involving the decoy account deployed by harden/03. It is
+    never used by anyone legitimate, so a single hit is high-confidence malicious
+    - typically an attacker who found it during enumeration (Phase 2 step 2).
+references:
+    - https://attack.mitre.org/techniques/T1078/
+author: Daniel Guy
+date: 2026/10/27
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID:
+            - 4624
+            - 4625
+            - 4768
+            - 4769
+        TargetUserName: 'svc-sql-admin'   # the honey account
+    condition: selection
+falsepositives:
+    - None by design. Any hit warrants investigation.
+level: critical
+tags:
+    - attack.credential_access
+    - attack.discovery
+    - attack.t1078

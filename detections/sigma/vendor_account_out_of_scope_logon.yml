@@ -1,0 +1,32 @@
+title: Vendor Account Logon Outside Authorized Host
+id: 8c514534-f1a7-4179-ace6-789efb2fbd84
+status: experimental
+description: >
+    A vendor account (naming convention v-*) authenticating to any host other
+    than the single system its contract requires. Core detection for the whole
+    project: a stolen vendor credential used to reach the wider estate.
+    Catches Phase 2 step 1 and the pivot in step 4.
+references:
+    - https://attack.mitre.org/techniques/T1078/002/
+author: Daniel Guy
+date: 2026/10/27
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID:
+            - 4624
+            - 4625
+        TargetUserName|startswith: 'v-'
+    filter_sanctioned:
+        # The ONLY host this vendor is authorized to reach (the HVAC jump target).
+        Computer: 'fs01.acme.lab'
+    condition: selection and not filter_sanctioned
+falsepositives:
+    - A newly authorized vendor system not yet added to the allowlist
+level: high
+tags:
+    - attack.initial_access
+    - attack.t1078.002
+    - attack.t1199

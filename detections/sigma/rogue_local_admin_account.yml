@@ -1,0 +1,27 @@
+title: New Account Created and Added to Administrators
+id: 5a1c87f0-0aa4-47aa-b020-56de05f09d57
+status: experimental
+description: >
+    Account creation (4720) or addition to the local/domain Administrators group
+    (4732 to SID S-1-5-32-544). Catches Phase 2 step 6 (svc-helpdesk persistence).
+references:
+    - https://attack.mitre.org/techniques/T1136/001/
+author: Daniel Guy
+date: 2026/10/27
+logsource:
+    product: windows
+    service: security
+detection:
+    create:
+        EventID: 4720
+    add_admin:
+        EventID: 4732
+        TargetSid|endswith: '-544'    # BUILTIN\Administrators
+    condition: 1 of them
+falsepositives:
+    - Legitimate IT provisioning - correlate with a change ticket
+level: medium
+tags:
+    - attack.persistence
+    - attack.t1136.001
+    - attack.t1098
