@@ -1,0 +1,7 @@
+# Vagrant state and generated secrets - never commit these
+.vagrant/
+lab/.vagrant/
+lab/.secrets/
+*.log
+*.box
+.DS_Store
