@@ -27,10 +27,10 @@ baseline, then against a hardened one.
 
 ## Deliverables
 
-- **Threat-hunting & detection report** — the attack, hypothesis-driven hunts, Sigma rules (`detections/`, `hunts/`)
-- **Attack-surface write-up** — what an attacker sees before vs. after hardening
-- **Third-party risk assessment** — executive-facing, mapped to NIST CSF 2.0 and 800-53 (`risk-assessment/`)
-- **Incident response playbook** — "suspected compromised third-party credential" (`playbooks/`)
+- **Threat-hunting & detection report** — the attack (`attack/`), hypothesis-driven hunts (`hunts/`), Sigma + Wazuh rules (`detections/`)
+- **Attack-surface write-up** — before vs. after hardening (`docs/attack-surface-analysis.md`)
+- **Third-party risk assessment** — executive-facing, NIST CSF 2.0 + 800-53 (`risk-assessment/`)
+- **Incident response playbook** — suspected compromised third-party credential (`playbooks/`)
 
 ## Lab topology (Phase 1)
 
