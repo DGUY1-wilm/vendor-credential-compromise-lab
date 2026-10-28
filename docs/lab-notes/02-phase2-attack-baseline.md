@@ -24,20 +24,20 @@ Every "No" in this table becomes a detection in Phase 3.
 ## Evidence (screenshots)
 
 <!-- IMAGE: 01-baseline-vendor-logon-logged-not-alerted.png -->
-<!-- ![Recon logged, not alerted](images/01-baseline-vendor-logon-logged-not-alerted.png) -->
-<!-- Step 1: v-coolair authenticates from the attacker host; logged, no alert. -->
+![Recon logged, not alerted](images/01-baseline-vendor-logon-logged-not-alerted.png)
+Step 1: v-coolair authenticates from the attacker host; logged, no alert.
 
 <!-- IMAGE: 02-svc-account-cracked-fs01-pwned.png -->
-<!-- ![svc-backup cracked, fs01 pwned](images/02-svc-account-cracked-fs01-pwned.png) -->
-<!-- Steps 2-3: Kerberoast cracked, admin (Pwn3d!) on fs01, Finance/HR shares exposed. -->
+![svc-backup cracked, fs01 pwned](images/02-svc-account-cracked-fs01-pwned.png) 
+Steps 2-3: Kerberoast cracked, admin (Pwn3d!) on fs01, Finance/HR shares exposed. 
 
 <!-- IMAGE: 03-exfiltrated-finance-data.png -->
-<!-- ![Exfiltrated finance data](images/03-exfiltrated-finance-data.png) -->
-<!-- Step 4: sensitive (fake) financial data read and exfiltrated. -->
+![Exfiltrated finance data](images/03-exfiltrated-finance-data.png) 
+Step 4: sensitive (fake) financial data read and exfiltrated. 
 
 <!-- IMAGE: 04-baseline-kerberoast-logged.png -->
-<!-- ![Kerberoast logged, not alerted](images/04-baseline-kerberoast-logged.png) -->
-<!-- Step 2 in the SIEM: the 4769 event recorded but not alerted at baseline. -->
+![Kerberoast logged, not alerted](images/04-baseline-kerberoast-logged.png) 
+-- Step 2 in the SIEM: the 4769 event recorded but not alerted at baseline. 
 
 ## Notes / things learned
 - The recon logon is **NTLM, logon type 3** because nxc authenticated by IP
