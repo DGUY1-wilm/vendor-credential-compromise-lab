@@ -8,6 +8,24 @@ Detections for the Phase 2 attack chain, in two forms:
 
 Each Sigma rule names the Phase 2 step it catches and its ATT&CK technique.
 
+## Status: verified firing
+
+Rule **100100 (Kerberoasting)** is confirmed firing against a real 4769 event via
+`wazuh-logtest` — level 12, MITRE T1558.003.
+
+<!-- IMAGE: 05-detection-kerberoast-fires.png -->
+<!-- ![Rule 100100 firing in wazuh-logtest](../docs/images/05-detection-kerberoast-fires.png) -->
+<!-- The real Kerberoast event matched at level 12 with the correct MITRE mapping. -->
+
+### Two tuning fixes that were required (and why they matter)
+1. **Encryption value.** The textbook Kerberoast indicator is RC4 = `0x17`, but
+   this lab's 4769 reported `ticketEncryptionType = 0xffffffff`. The rule matches
+   both. *Always confirm the real value in your environment.*
+2. **Rule anchoring.** Chaining off `<if_group>windows>` / `windows_security` did
+   not fire here. The events are handled by the `json` decoder, so the rules use
+   `<decoded_as>json</decoded_as>`. This is the single most important detail for
+   these rules to work on Wazuh 4.9.x in this setup.
+
 ## Coverage map
 
 | Attack step | Sigma rule | Wazuh ID |

@@ -37,7 +37,7 @@ function New-LabUser {
             -Name "$Given $Surname" -GivenName $Given -Surname $Surname `
             -Description $Description -Path "OU=$OU,$DomainDN" `
             -AccountPassword (ConvertTo-SecureString $Password -AsPlainText -Force) `
-            -Enabled $true -PasswordNeverExpires:$NeverExpires
+            -Enabled $true -PasswordNeverExpires ([bool]$NeverExpires)
     }
     foreach ($g in $Groups) { Add-ADGroupMember -Identity $g -Members $Sam -ErrorAction SilentlyContinue }
 }

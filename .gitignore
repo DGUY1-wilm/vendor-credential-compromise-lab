@@ -11,3 +11,12 @@ attack/loot/*
 !attack/loot/.gitkeep
 attack/scripts/*.hashes
 *.zip
+
+# BloodHound / SharpHound collection artifacts (copied into lab/ during a session)
+lab/*.zip
+lab/sharphound/
+lab/sharphound-output/
+lab/*bloodhound.zip
+*_bloodhound.zip
+bloodhound/
+docs/images/.gitkeep

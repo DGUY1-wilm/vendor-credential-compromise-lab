@@ -47,6 +47,7 @@ Vagrant.configure("2") do |config|
     dc.vm.provision :reload
     dc.vm.provision "shell", path: "scripts/dc01/02-configure-ad.ps1"
     dc.vm.provision "shell", path: "scripts/common/enable-auditing.ps1"
+    dc.vm.provision "shell", path: "scripts/common/configure-firewall.ps1"
     dc.vm.provision "shell", path: "scripts/common/install-sysmon.ps1"
     dc.vm.provision "shell", path: "scripts/common/install-wazuh-agent.ps1"
   end
@@ -70,10 +71,14 @@ Vagrant.configure("2") do |config|
     fs.vm.provision :reload
     fs.vm.provision "shell", path: "scripts/fs01/02-create-shares.ps1"
     fs.vm.provision "shell", path: "scripts/common/enable-auditing.ps1"
+    fs.vm.provision "shell", path: "scripts/common/configure-firewall.ps1"
     fs.vm.provision "shell", path: "scripts/common/install-sysmon.ps1"
     fs.vm.provision "shell", path: "scripts/common/install-wazuh-agent.ps1"
   end
   # --- Attacker (Kali) -------------------------------------------------------
+  # NOTE: on first boot Kali's internal-network adapter (eth1 / 10.10.10.66) may
+  # come up without an address. If the attacker can't reach 10.10.10.0/24, run
+  # `vagrant reload kali` once - the reboot brings eth1 up attached to acme-corp.
   # Placed on the corp internal net to represent the position an attacker reaches
   # AFTER authenticating over the vendor's remote access with the stolen password.
   # Phase 3 replaces that flat reach with a jump host / ZTNA.

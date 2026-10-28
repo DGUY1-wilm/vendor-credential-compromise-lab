@@ -23,4 +23,10 @@ if (-not (Get-ADUser -Filter "SamAccountName -eq 'svc-backup'")) {
 # Register an SPN -> this is what makes the account roastable
 Set-ADUser -Identity 'svc-backup' -ServicePrincipalNames @{Replace='MSSQLSvc/fs01.acme.lab:1433'}
 
-Write-Host '[dc01] svc-backup seeded (Kerberoastable). Now run the fs01 seed script.'
+# [W8] Allow RC4 for this account. Modern Windows Server defaults to AES-only, which
+# makes a roasted ticket uncrackable (KDC_ERR_ETYPE_NOSUPP when RC4 is requested).
+# Setting msDS-SupportedEncryptionTypes=4 (RC4_HMAC) is the realistic legacy
+# misconfiguration that leaves the account roastable with a crackable ticket.
+Set-ADUser -Identity 'svc-backup' -Replace @{'msDS-SupportedEncryptionTypes'=4}
+
+Write-Host '[dc01] svc-backup seeded (Kerberoastable, RC4 allowed). Now run the fs01 seed script.'
