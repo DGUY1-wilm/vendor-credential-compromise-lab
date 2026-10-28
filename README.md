@@ -12,8 +12,8 @@ behind the 2013 Target breach and the 2024 Snowflake-related intrusions.
 > MITRE **T1558.003**, validated against a real event.
 
 <!-- IMAGE: wazuh-agents-active.png — both endpoints enrolled and reporting; proves the monitoring pipeline works end to end -->
-<!-- ![Both endpoints enrolled and reporting to the Wazuh SIEM](docs/images/wazuh-agents-active.png) -->
-<!-- *The lab, built and monitored: dc01 and fs01 enrolled and actively reporting to Wazuh.* -->
+![Both endpoints enrolled and reporting to the Wazuh SIEM](docs/images/wazuh-agents-active.png)
+*The lab, built and monitored: dc01 and fs01 enrolled and actively reporting to Wazuh.* 
 
 ## The scenario
 
