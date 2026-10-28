@@ -28,15 +28,15 @@ Every "No" in this table becomes a detection in Phase 3.
 Step 1: v-coolair authenticates from the attacker host; logged, no alert.
 
 <!-- IMAGE: 02-svc-account-cracked-fs01-pwned.png -->
-![svc-backup cracked, fs01 pwned](images/02-svc-account-cracked-fs01-pwned.png) 
+![svc-backup cracked, fs01 pwned](../images/02-svc-account-cracked-fs01-pwned.png) 
 Steps 2-3: Kerberoast cracked, admin (Pwn3d!) on fs01, Finance/HR shares exposed. 
 
 <!-- IMAGE: 03-exfiltrated-finance-data.png -->
-![Exfiltrated finance data](images/03-exfiltrated-finance-data.png) 
+![Exfiltrated finance data](../images/03-exfiltrated-finance-data.png) 
 Step 4: sensitive (fake) financial data read and exfiltrated. 
 
 <!-- IMAGE: 04-baseline-kerberoast-logged.png -->
-![Kerberoast logged, not alerted](images/04-baseline-kerberoast-logged.png) 
+![Kerberoast logged, not alerted](../images/04-baseline-kerberoast-logged.png) 
 -- Step 2 in the SIEM: the 4769 event recorded but not alerted at baseline. 
 
 ## Notes / things learned
