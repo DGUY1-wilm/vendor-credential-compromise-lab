@@ -24,7 +24,7 @@ Every "No" in this table becomes a detection in Phase 3.
 ## Evidence (screenshots)
 
 <!-- IMAGE: 01-baseline-vendor-logon-logged-not-alerted.png -->
-![Recon logged, not alerted](docs/images/01-baseline-vendor-logon-logged-not-alerted.png)
+![Recon logged, not alerted](../docs/images/01-baseline-vendor-logon-logged-not-alerted.png)
 Step 1: v-coolair authenticates from the attacker host; logged, no alert.
 
 <!-- IMAGE: 02-svc-account-cracked-fs01-pwned.png -->
