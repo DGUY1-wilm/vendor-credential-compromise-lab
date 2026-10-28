@@ -120,10 +120,10 @@ nxc smb "$FS_IP" -u svc-backup -p 'Autumn2024!' -x 'schtasks /delete /tn AcmeUpd
 ## Evidence captured
 
 <!-- IMAGE: 02-svc-account-cracked-fs01-pwned.png -->
-<!-- ![svc-backup cracked and fs01 pwned](../docs/images/02-svc-account-cracked-fs01-pwned.png) -->
+![svc-backup cracked and fs01 pwned](../docs/images/02-svc-account-cracked-fs01-pwned.png) 
 
 <!-- IMAGE: 03-exfiltrated-finance-data.png -->
-<!-- ![Exfiltrated finance data](../docs/images/03-exfiltrated-finance-data.png) -->
+![Exfiltrated finance data](../docs/images/03-exfiltrated-finance-data.png) 
 
 ## Wrap-up
 
