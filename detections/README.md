@@ -14,8 +14,8 @@ Rule **100100 (Kerberoasting)** is confirmed firing against a real 4769 event vi
 `wazuh-logtest` — level 12, MITRE T1558.003.
 
 <!-- IMAGE: 05-detection-kerberoast-fires.png -->
-<!-- ![Rule 100100 firing in wazuh-logtest](../docs/images/05-detection-kerberoast-fires.png) -->
-<!-- The real Kerberoast event matched at level 12 with the correct MITRE mapping. -->
+![Rule 100100 firing in wazuh-logtest](../docs/images/05-detection-kerberoast-fires.png) 
+The real Kerberoast event matched at level 12 with the correct MITRE mapping. 
 
 ### Two tuning fixes that were required (and why they matter)
 1. **Encryption value.** The textbook Kerberoast indicator is RC4 = `0x17`, but
