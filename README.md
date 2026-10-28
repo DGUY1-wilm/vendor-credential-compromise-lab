@@ -32,32 +32,32 @@ credential authenticates and Kerberoasting runs; the SIEM records the events at
 level 0 and no analyst is ever notified.
 
 <!-- IMAGE: 01-baseline-vendor-logon-logged-not-alerted.png — vendor logon captured from the attacker IP, logged but not alerted -->
-<!-- ![Baseline: vendor logon logged, not alerted](docs/images/01-baseline-vendor-logon-logged-not-alerted.png) -->
-<!-- *Before: the vendor credential logs in from the attacker host (10.10.10.66). Logged, never alerted.* -->
+![Baseline: vendor logon logged, not alerted](docs/images/01-baseline-vendor-logon-logged-not-alerted.png)
+*Before: the vendor credential logs in from the attacker host (10.10.10.66). Logged, never alerted.*
 
 <!-- IMAGE: 04-baseline-kerberoast-logged.png — the 4769 Kerberoast event sitting silently in the logs -->
-<!-- ![Baseline: Kerberoast logged, not alerted](docs/images/04-baseline-kerberoast-logged.png) -->
-<!-- *Before: the Kerberoast 4769 event is recorded but triggers no alert.* -->
+![Baseline: Kerberoast logged, not alerted](docs/images/04-baseline-kerberoast-logged.png) 
+*Before: the Kerberoast 4769 event is recorded but triggers no alert.*
 
 **After — the same Kerberoast fires a high-severity alert.** A tuned Wazuh rule
 matches the real event and generates a level-12 alert tagged to MITRE
 T1558.003.
 
 <!-- IMAGE: 05-detection-kerberoast-fires.png — wazuh-logtest showing rule 100100 matching the real Kerberoast event at level 12 -->
-<!-- ![After: detection fires on the Kerberoast](docs/images/05-detection-kerberoast-fires.png) -->
-<!-- *After: the same event now matches rule 100100 (level 12, T1558.003) — "Alert to be generated."* -->
+![After: detection fires on the Kerberoast](docs/images/05-detection-kerberoast-fires.png) 
+*After: the same event now matches rule 100100 (level 12, T1558.003) — "Alert to be generated."* 
 
 ## The attack chain
 
 One stolen HVAC-vendor password → full file-server compromise, proven end to end.
 
 <!-- IMAGE: 02-svc-account-cracked-fs01-pwned.png — Kerberoast crack + Pwn3d! on fs01 + exposed shares -->
-<!-- ![Service account cracked, file server pwned](docs/images/02-svc-account-cracked-fs01-pwned.png) -->
-<!-- *The escalation: the Kerberoasted service account is cracked and grants admin (Pwn3d!) on fs01, exposing the Finance/HR shares.* -->
+![Service account cracked, file server pwned](docs/images/02-svc-account-cracked-fs01-pwned.png) 
+*The escalation: the Kerberoasted service account is cracked and grants admin (Pwn3d!) on fs01, exposing the Finance/HR shares.* 
 
 <!-- IMAGE: 03-exfiltrated-finance-data.png — the exfiltrated vendor_payments_2026.csv (fake, clearly-labeled data) -->
-<!-- ![Exfiltrated finance data](docs/images/03-exfiltrated-finance-data.png) -->
-<!-- *The payoff: sensitive (fake) financial data read and exfiltrated by the compromised service account.* -->
+![Exfiltrated finance data](docs/images/03-exfiltrated-finance-data.png) 
+*The payoff: sensitive (fake) financial data read and exfiltrated by the compromised service account.* 
 
 ## Phases
 
