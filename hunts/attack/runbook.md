@@ -117,8 +117,4 @@ nxc smb "$FS_IP" -u svc-backup -p 'Autumn2024!' -x 'schtasks /delete /tn AcmeUpd
 
 ---
 
-## Wrap-up
 
-Tally, per step, what Wazuh caught at baseline (likely very little). That tally is
-Phase 3's to-do list: every missed step becomes a detection. Save the BloodHound
-graph screenshot — it's one of the most legible artifacts for a write-up.
